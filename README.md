@@ -33,11 +33,23 @@ For example the following input “ABABAA” should print :
 - Apache Maven
 - Java 17
 
+or 
+
+- Docker
+
 ## Install
 `mvn package`
 
 ## Run
+### Java
 `java -jar target/tennis.jar`
+
+### Docker
+If you want to run without need to install maven and Java 17, you could use docker.
+
+When running inside a docker container, there's no interactive console to provide input. The score should be passed as environment variable `score`.
+- Build the docker image: `docker build -t tennis .`
+- Run it with the `score` environment variable. Example: `docker run -e score=AAAA tennis`
 
 ## Run tests
 `mvn test`
