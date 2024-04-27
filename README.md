@@ -29,5 +29,18 @@ For example the following input “ABABAA” should print :
 
 “Player A wins the game
 
+## Prerequisites
+- Apache Maven
+- Java 17
+
+## Install
+`mvn package`
+
+## Run
+`java -jar target/tennis.jar`
+
+## Run tests
+`mvn test`
+
 ## License
 See the [LICENSE](/LICENSE) file.
