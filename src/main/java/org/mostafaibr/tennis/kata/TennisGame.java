@@ -1,6 +1,9 @@
 package org.mostafaibr.tennis.kata;
 import lombok.Getter;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 @Getter
 public class TennisGame {
     private final Player playerA;
@@ -38,9 +41,10 @@ public class TennisGame {
         if(scoringPlayer.hasWinningScore() && otherPlayer.hasWinningScore()){
             if(scoringPlayer.hasAdvantage()){
                 return player;
-            } else{
-                scoringPlayer.setAdvantage(true);
+            } else if(otherPlayer.hasAdvantage()) {
                 otherPlayer.setAdvantage(false);
+            } else {
+                scoringPlayer.setAdvantage(true);
             }
         } else if (scoringPlayer.hasWinningScore()) {
             return player;
@@ -75,8 +79,8 @@ public class TennisGame {
      *
      * @param input the whole game scoring points, each character represents the player which scores successively
      */
-    public char play(String input){
-        char winner = NO_WINNER;
+    public void play(String input){
+        char winner;
         for (char player : input.toCharArray()) {
             winner = recordPoint(player);
             System.out.println(translateScore(winner));
@@ -86,6 +90,5 @@ public class TennisGame {
                 break;
             }
         }
-        return winner;
     }
 }

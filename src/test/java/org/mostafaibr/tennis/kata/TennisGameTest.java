@@ -71,7 +71,6 @@ public class TennisGameTest {
         game.getPlayerA().setAdvantage(true);
         game.recordPoint(PLAYER_B);
         assertFalse(game.getPlayerA().hasAdvantage());
-        assertTrue(game.getPlayerB().hasAdvantage());
     }
 
     @Test
@@ -126,7 +125,7 @@ public class TennisGameTest {
     public void testPlay_DeuceAndAdvantage() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        game.play("ABABABABB");
+        game.play("ABABABABBB");
         StringBuilder expected = new StringBuilder()
                 .append("Player A: 15 / Player B: 0\n")
                 .append("Player A: 15 / Player B: 15\n")
@@ -135,6 +134,7 @@ public class TennisGameTest {
                 .append("Player A: 40 / Player B: 30\n")
                 .append("Player A: 40 / Player B: 40\n")
                 .append("Player A: adv / Player B: 40\n")
+                .append("Player A: 40 / Player B: 40\n")
                 .append("Player A: 40 / Player B: adv\n")
                 .append("Player B wins the game\n");
         assertEquals(expected.toString(), out.toString());
