@@ -54,5 +54,10 @@ When running inside a docker container, there's no interactive console to provid
 ## Run tests
 `mvn test`
 
+### Test with coverage
+`mvn test-compile org.pitest:pitest-maven:mutationCoverage`
+
+Then you will find the pit-report under `target/org.mostafaibr.tennis.kata/index.html`, it can be opened in any browser.
+
 ## License
 See the [LICENSE](/LICENSE) file.
