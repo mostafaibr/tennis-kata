@@ -32,9 +32,6 @@ public class TennisGame {
      * @see https://en.wikipedia.org/wiki/Tennis#Scoring
      */
     char recordPoint(char player) {
-        if(player != PLAYER_A && player != PLAYER_B){
-            throw new IllegalArgumentException("Illegal player: " + player);
-        }
         Player scoringPlayer = player == PLAYER_A ? playerA : playerB;
         Player otherPlayer = player == PLAYER_A ? playerB : playerA;
 
@@ -80,6 +77,13 @@ public class TennisGame {
      * @param input the whole game scoring points, each character represents the player which scores successively
      */
     public void play(String input){
+        Optional<Character> illegalPlayer = input.chars()
+                .mapToObj(player -> (char) player)
+                .filter(player -> player != PLAYER_A && player != PLAYER_B)
+                .findFirst();
+        if(illegalPlayer.isPresent()){
+            throw new IllegalArgumentException("Illegal player: " + illegalPlayer.get());
+        }
         char winner;
         for (char player : input.toCharArray()) {
             winner = recordPoint(player);
