@@ -42,8 +42,7 @@ Feature: Tennis Game
     And player "A" has advantage
     When player "B" scores a point
     Then player "A" should loose advantage
-    And player "B" should have advantage
-    And the score should be announced as "Player A: 40 / Player B: adv"
+    And the score should be announced as "Player A: 40 / Player B: 40"
 
   Scenario: Invalid player scoring
 
