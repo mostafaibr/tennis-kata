@@ -32,8 +32,13 @@ public class TennisGameStepDefs {
 
     @When("player {string} scores a point")
     public void playerScoresPoint(String player) {
+        winner = tennisGame.recordPoint(player.charAt(0));
+    }
+
+    @When("player {string} exists in the game")
+    public void playerExistsInGame(String player) {
         try{
-            winner = tennisGame.recordPoint(player.charAt(0));
+            tennisGame.play("AAA" + player.charAt(0));
         } catch (Exception e){
             exception = e.getMessage();
         }

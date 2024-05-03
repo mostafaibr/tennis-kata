@@ -46,5 +46,5 @@ Feature: Tennis Game
 
   Scenario: Invalid player scoring
 
-    When player "X" scores a point
+    When player "X" exists in the game
     Then an exception should be thrown with the message "Illegal player: X"

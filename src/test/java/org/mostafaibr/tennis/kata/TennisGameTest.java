@@ -88,7 +88,7 @@ public class TennisGameTest {
     @Test
     @DisplayName("Test recordPoint when illegal player character inputted")
     public void testRecordPoint_IllegalCharacter() {
-        assertThrows(IllegalArgumentException.class, () -> game.recordPoint('C'), "Illegal player: C");
+        assertThrows(IllegalArgumentException.class, () -> game.play("AAAC"), "Illegal player: C");
     }
 
     @Test
