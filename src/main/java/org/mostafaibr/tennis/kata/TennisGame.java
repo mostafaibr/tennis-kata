@@ -71,12 +71,13 @@ public class TennisGame {
     /**
      *
      * A function to play and keep track of the score during a tennis game by printing it.
-     * It exists either when the game ends, or when the players stop the game and no more score points
+     * It exits either when the game ends, or when the players stop the game and no more score points
      * Any score point after the end of the game is ignored and considered as training (not taken into consideration on the scoring board)
      *
      * @param input the whole game scoring points, each character represents the player which scores successively
      */
     public void play(String input){
+        // Detect illegal player before starting the game which avoid unnecessary iterations over gameplay
         Optional<Character> illegalPlayer = input.chars()
                 .mapToObj(player -> (char) player)
                 .filter(player -> player != PLAYER_A && player != PLAYER_B)
@@ -84,6 +85,7 @@ public class TennisGame {
         if(illegalPlayer.isPresent()){
             throw new IllegalArgumentException("Illegal player: " + illegalPlayer.get());
         }
+
         char winner;
         for (char player : input.toCharArray()) {
             winner = recordPoint(player);
