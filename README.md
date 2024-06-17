@@ -29,6 +29,13 @@ For example the following input “ABABAA” should print :
 
 “Player A wins the game
 
+### Match/parties
+
+In addition to a single game play, players A and B could play a match of several games with a limit of number of games already determined. 
+
+**For example:** "Best of five" or "First to three wins": it means that the maximum number of match to be played is 5, if any player reaches 3 game wins, he wins the match.
+Same for any other limit (Best of 3, Best of 7, etc.).
+
 ## Prerequisites
 - Apache Maven
 - Java 17
@@ -47,9 +54,19 @@ or
 ### Docker
 If you want to run without need to install maven and Java 17, you could use docker.
 
-When running inside a docker container, there's no interactive console to provide input. The score should be passed as environment variable `score`.
+When running inside a docker container, there's no interactive console to provide input. The inputs should be passed as environment variables.
 - Build the docker image: `docker build -t tennis .`
-- Run it with the `score` environment variable. Example: `docker run -e score=AAAA tennis`
+
+- Run the container: 
+  - In case of playing a single game, 
+    - you should pass the `score` as an environment variable. 
+    
+    Example: `docker run -e score=AAAA tennis`
+  - In case of playing a match of multi games, you should pass:
+    - `limit`: the games limit to set, which is the max number of games to be played. Example: `3` 
+    - `score`: the scores of the whole match split by a ',' for each game. Example: `AAAA,AAAA,AAAA,AAAAA,AAAA`
+  
+    Example: `docker run -e limit=3 -e score=AAAA,BBBB,AAAA tennis`
 
 ## Run tests
 `mvn test`

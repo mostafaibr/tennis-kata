@@ -23,6 +23,19 @@ public class TennisGame {
 
     /**
      *
+     * A function that reset the scores of the tennis game after each game end
+     * prevent creating a new game when playing a set
+     *
+     */
+    public void resetScores(){
+        playerA.setScore(0);
+        playerB.setScore(0);
+        playerA.setAdvantage(false);
+        playerB.setAdvantage(false);
+    }
+
+    /**
+     *
      * A function to update score by recording points and return winner when the game ends
      *
      * @param player the player that scores a point
