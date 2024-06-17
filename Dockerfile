@@ -10,8 +10,9 @@ COPY . /tennis
 # Package the tennis application using Maven
 RUN mvn package
 
-# Set environment variable to be used as input
+# Set environment variables to be used as input
 ENV score EMPTY
+ENV limit EMPTY
 
 # Command to run the tennis application with the passed arguments
-CMD ["sh", "-c", "java -jar target/tennis.jar $score"]
+CMD ["sh", "-c", "java -jar target/tennis.jar $score $limit"]
