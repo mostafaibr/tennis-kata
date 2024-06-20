@@ -89,7 +89,7 @@ public class TennisGame {
      *
      * @param input the whole game scoring points, each character represents the player which scores successively
      */
-    public void play(String input){
+    public char play(String input){
         // Detect illegal player before starting the game which avoid unnecessary iterations over gameplay
         Optional<Character> illegalPlayer = input.chars()
                 .mapToObj(player -> (char) player)
@@ -99,7 +99,7 @@ public class TennisGame {
             throw new IllegalArgumentException("Illegal player: " + illegalPlayer.get());
         }
 
-        char winner;
+        char winner = NO_WINNER;
         for (char player : input.toCharArray()) {
             winner = recordPoint(player);
             System.out.println(translateScore(winner));
@@ -109,5 +109,6 @@ public class TennisGame {
                 break;
             }
         }
+        return winner;
     }
 }
